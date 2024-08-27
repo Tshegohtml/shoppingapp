@@ -35,27 +35,15 @@ const ShoppingList = () => {
   });
 
   return (
-    <div>
-      {/* <select onChange={handleListChange}>
-        {Object.keys(lists).map(list => (
-          <option key={list} value={list}>{list}</option>
-        ))}
-      </select>
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search items"
-      />
-      <select onChange={(e) => setSortOption(e.target.value)} value={sortOption}>
-        <option value="name">Sort by Name</option>
-        <option value="quantity">Sort by Quantity</option>
-        <option value="category">Sort by Category</option>
-      </select> */}
+    <div className="shopping-list-container">
+      <div className="button-container">
+        
+        
+      </div>
       <ul>
         {sortedItems.map((item, index) => (
           <li key={index}>
-            <strong>{item.name}</strong> (Quantity: {item.quantity}, Size: {item.size}, Category: {item.category}, Notes: {item.notes}) 
+            <strong>{item.name}</strong> (Quantity: {item.quantity}, Size: {item.size}, Category: {item.category}, Notes: {item.notes})
             <button onClick={() => handleRemoveItem(index)}>Remove</button>
           </li>
         ))}
