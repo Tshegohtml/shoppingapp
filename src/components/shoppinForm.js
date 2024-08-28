@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "./actions";
 import "./shoppinForm.css";
+import logo from './png.webp';
 
 const ShoppingForm = () => {
   const [name, setName] = useState("");
@@ -27,6 +28,9 @@ const ShoppingForm = () => {
 
   return (
     <div className="form-container">
+      <img src={logo} className="img-logo" />
+      
+      <h2>Create a shopping App</h2>
       <form onSubmit={handleSubmit} className="shopping-form">
         <div className="box-form">
           <div>

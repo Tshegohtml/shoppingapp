@@ -1,6 +1,8 @@
 import React, { useState, } from 'react';
-import './register.css'
 import { useNavigate } from 'react-router-dom';
+import logo from './png.webp';
+
+
 
 
 const Register = () => {
@@ -11,7 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleRegister = () => {
-    navigate('./login.js');
+    navigate('/login');
   
    
 
@@ -27,15 +29,17 @@ const Register = () => {
     } else {
       const newUser = { username, password, email, phone };
       users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('username',username)
+      localStorage.setItem('password',password)
       alert('Registration Successful!');
      
     }
-   navigate('/login')
+   navigate('/login');
   };
   return (
-    <div className="App">
+    <div className="Button">
       <div className='logo'></div>
+      <img src={logo} className="img-logo" />
       <h1>Register</h1>
       <form>
         <div>

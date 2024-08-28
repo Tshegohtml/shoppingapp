@@ -1,21 +1,26 @@
 import React from 'react';
-import { Router, Route, Routes } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './components/store';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './components/store';
 import ShoppingList from './components/shoppingList';
-import ShoppingForm from './components/shoppinForm';
+import ShoppingForm from './components/shoppinForm'; 
 import Register from './components/register';
-import LoginForm from './components/login';
+import Login from './components/login'; 
 import './App.css';
+import './components/login.css'; 
 
-function App() {
+
+
+const App = () => {
   return (
-    <Provider store={store}>
-      <div className="App"></div>
-      {/* <ShoppingForm/> */}
-      <Register/>
-    </Provider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Register />} />
+       <Route path="/login"  element={<Login />} />
+        <Route path="/shoppinForm" element={<ShoppingForm />} />
+        <Route path="/shoppingList" element={<ShoppingList />} /> 
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
