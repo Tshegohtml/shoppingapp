@@ -1,58 +1,65 @@
+// Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from './png.webp';  
+import logo from './png.webp';
+import './login.css'; // Add your CSS for styling
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    console.log("Entered Username:", username);
+    console.log("Entered Email:", email);
     console.log("Entered Password:", password);
 
-    const storedPassword = localStorage.getItem("password");
+    const users = JSON.parse(localStorage.getItem('users')) || []; // Retrieve all users
 
-    console.log("Stored Password:", storedPassword);
+    // Find user with matching email and password
+    const user = users.find(user => user.email === email && user.password === password);
 
-    if (storedPassword && storedPassword === password) {
-      localStorage.setItem('loggedIn', true);
-      navigate('/shoppinForm'); 
+    if (user) {
+      localStorage.setItem('loggedIn', true); // Mark user as logged in
+      navigate('/shoppinForm'); // Navigate to the shopping form
     } else {
-      alert('Invalid username or password');
+      alert('Invalid email or password'); // Notify user of failure
     }
   };
 
   return (
     <div className="login-container">
-       <img src={logo} className="img-logo" />
-      <form className="login-form" onSubmit={handleLogin}>
+      <div className="login-form-container">
+        <img src={logo} className="img-logo" alt="Logo" />
         <h1>Login</h1>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        <p>
-          Don't have an account? <a href="/register">Register here</a>
-        </p>
-      </form>
+        <form className="login-form" onSubmit={handleLogin}>
+          <div className="login-form__input-group">
+            <label className="login-form__label">Email:</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="login-form__input"
+            />
+          </div>
+          <div className="login-form__input-group">
+            <label className="login-form__label">Password:</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="login-form__input"
+            />
+          </div>
+          <button type="submit" className="login-form__button">Login</button>
+          <p>
+            Don't have an account? <a href="/register">Register here</a>
+          </p>
+        </form>
+      </div>
     </div>
   );
 };

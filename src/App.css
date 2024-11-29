@@ -1,10 +1,10 @@
+/* .form-container styles */
 .form-container {
   text-align: center;
-  
 }
 
 .add-item-button {
-  display:flex;
+  display: flex;
   margin: 20px auto;
   padding: 10px 20px;
   font-size: 16px;
@@ -20,25 +20,20 @@
 input, select {
   margin: 10px;
   padding: 10px;
-  
- 
-  
-  
 }
 
-input[type="text" ] {
-  width: 600px;
- 
+input[type="text"] {
+  width: 500px;
 }
+
 button {
   padding: 10px;
   margin: 10px;
   background-color: chocolate;
   width: 150px;
   border: none;
-  padding-left: 25px;
-  color:antiquewhite;
-
+  color: antiquewhite;
+  cursor: pointer;
 }
 
 select {
@@ -46,12 +41,137 @@ select {
   margin-right: 35%;
 }
 
-.box-form{
+.box-form {
   display: flex;
   gap: 10px;
- 
 }
 
-.input-left{
+.input-left {
   margin-left: 20px;
+}
+
+/* shoppingList.css */
+.shopping-list-container {
+  padding: 20px;
+}
+
+.search-bar input {
+  padding: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.shopping-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center; /* Ensure buttons stay next to each other */
+}
+
+.remove-button,
+.edit-button,
+.update-button,
+.cancel-button {
+  padding: 8px 12px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+}
+
+.remove-button {
+  background-color: #dc3545;
+}
+
+.edit-button {
+  background-color: #28a745;
+}
+
+.update-button {
+  background-color: #007bff;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+}
+
+.remove-button:hover,
+.edit-button:hover,
+.update-button:hover,
+.cancel-button:hover {
+  opacity: 0.8;
+}
+
+.edit-form {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-form input {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.edit-form button {
+  margin-right: 10px;
+}
+
+.share-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745; 
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 150px;
+  border-radius: 4px;
+}
+
+.share-button:hover {
+  background-color: #218838;  
+  opacity: 0.8;
+}
+
+.img-logo {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+.status-indicator {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.online {
+  display: flex;
+  justify-content: center;
+  background-color: green;
+  color: white;
+ 
+
+}
+
+.offline {
+  background-color: red;
+  color: white;
 }

@@ -1,24 +1,55 @@
-export const addItem = (item) => ({
-  type: 'ADD_ITEM',
-  payload: item
+import { createSlice } from '@reduxjs/toolkit';
+
+
+
+const initialState = {
+  lists: {
+    default: []  
+  },
+  currentList: 'default',  
+  categories: ['fresh produce', 'grains', 'meat', 'spices', 'oils', 'snacks', 'baking goods'],
+  sizes: ['small', 'medium', 'large']
+};
+
+
+const shoppingSlice = createSlice({
+  name: 'shopping',
+  initialState,
+  reducers: {
+    
+    addItem(state, action) {
+      const { name, quantity, notes, category, size } = action.payload;
+      state.lists[state.currentList].push({ name, quantity, notes, category, size });
+    },
+
+    
+    removeItem(state, action) {
+      const index = action.payload;
+      state.lists[state.currentList].splice(index, 1);
+    },
+    
+   
+    editItem(state, action) {
+      const { index, newItem } = action.payload;
+      state.lists[state.currentList][index] = newItem;
+    },
+
+    setCurrentList(state, action) {
+      state.currentList = action.payload;
+    },
+
+    
+
+    addList(state, action) {
+      const listName = action.payload;
+      if (!state.lists[listName]) {
+        state.lists[listName] = [];
+      }
+    }
+  }
 });
 
-export const removeItem = (index) => ({
-  type: 'REMOVE_ITEM',
-  payload: index
-});
+export const { addItem, removeItem, editItem, setCurrentList, addList } = shoppingSlice.actions;
 
-export const editItem = (index, newItem) => ({
-  type: 'EDIT_ITEM',
-  payload: { index, newItem }
-});
 
-export const setCurrentList = (listName) => ({
-  type: 'SET_CURRENT_LIST',
-  payload: listName
-});
-
-export const addList = (listName) => ({
-  type: 'ADD_LIST',
-  payload: listName
-});
+export default shoppingSlice.reducer;
