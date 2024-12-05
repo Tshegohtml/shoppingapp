@@ -1,8 +1,8 @@
-// Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from './png.webp';
-import './login.css'; // Add your CSS for styling
+import Swal from 'sweetalert2'; 
+
+import './login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -12,26 +12,41 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    console.log("Entered Email:", email);
-    console.log("Entered Password:", password);
+    console.log('Entered Email:', email);
+    console.log('Entered Password:', password);
 
-    const users = JSON.parse(localStorage.getItem('users')) || []; // Retrieve all users
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Find user with matching email and password
-    const user = users.find(user => user.email === email && user.password === password);
+    const user = users.find(
+      (user) => user.email === email && user.password === password
+    );
 
     if (user) {
-      localStorage.setItem('loggedIn', true); // Mark user as logged in
-      navigate('/shoppinForm'); // Navigate to the shopping form
+      localStorage.setItem('loggedIn', true);
+
+     
+      Swal.fire({
+        icon: 'success',
+        title: 'Login Successful',
+        text: 'Welcome back!',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+      navigate('/shoppingform');
     } else {
-      alert('Invalid email or password'); // Notify user of failure
+ 
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: 'Invalid email or password. Please try again.',
+      });
     }
   };
 
   return (
     <div className="login-container">
       <div className="login-form-container">
-        <img src={logo} className="img-logo" alt="Logo" />
         <h1>Login</h1>
         <form className="login-form" onSubmit={handleLogin}>
           <div className="login-form__input-group">
@@ -54,10 +69,24 @@ const Login = () => {
               className="login-form__input"
             />
           </div>
-          <button type="submit" className="login-form__button">Login</button>
-          <p>
-            Don't have an account? <a href="/register">Register here</a>
-          </p>
+          <button type="submit" className="login-form__button">
+            Login
+          </button>
+          <div style={{ textAlign: 'center', marginTop: '15px' }}>
+            <p>
+              Don't have an account?{' '}
+              <span
+                style={{
+                  color: '#007BFF',
+                  cursor: 'pointer',
+                  textDecoration: 'underline',
+                }}
+                onClick={() => navigate('/register')}
+              >
+                Sign up
+              </span>
+            </p>
+          </div>
         </form>
       </div>
     </div>

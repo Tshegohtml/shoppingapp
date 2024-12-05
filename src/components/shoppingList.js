@@ -6,7 +6,7 @@ import './shoppingList.css';
 const ShoppingList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOption, setSortOption] = useState('name');
-  const [editingItem, setEditingItem] = useState(null);  // To keep track of which item is being edited
+  const [editingItem, setEditingItem] = useState(null); 
   const [newItemData, setNewItemData] = useState({
     name: '',
     quantity: 1,
@@ -35,7 +35,7 @@ const ShoppingList = () => {
 
   
     const handleUpdateItem = () => {
-      dispatch(editItem({ index: editingItem, newItem: newItemData }));  // Use `editItem` here
+      dispatch(editItem({ index: editingItem, newItem: newItemData }));  
       setEditingItem(null);
       setNewItemData({
         name: '',

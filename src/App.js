@@ -14,9 +14,10 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Register />} />
-       <Route path="/login"  element={<Login />} />
-        <Route path="/shoppinForm" element={<ShoppingForm />} />
+        
+       <Route path="/"  element={<Login />} />
+       <Route path="/register" element={<Register />} />
+        <Route path="/shoppingForm" element={<ShoppingForm />} />
         <Route path="/shoppingList" element={<ShoppingList />} /> 
       </Routes>
     </Router>

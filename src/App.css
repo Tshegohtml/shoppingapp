@@ -1,6 +1,67 @@
-/* .form-container styles */
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: row;
+justify-content: center;
+  gap: 10px;
+
+}
+
+.item-card {
+
+
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  width: 200px;
+}
+
+.card-content {
+  font-size: 16px;
+  color: #333;
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.edit-button,
+.delete-button {
+  padding: 5px 10px;
+  background-color: orange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: darkorange;
+}
+
+.delete-button {
+  background-color: red;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+
 .form-container {
   text-align: center;
+  background-color: whitesmoke;
 }
 
 .add-item-button {
@@ -17,7 +78,8 @@
   align-items: center;
 }
 
-input, select {
+input,
+select {
   margin: 10px;
   padding: 10px;
 }
@@ -50,7 +112,7 @@ select {
   margin-left: 20px;
 }
 
-/* shoppingList.css */
+
 .shopping-list-container {
   padding: 20px;
 }
@@ -62,11 +124,6 @@ select {
   max-width: 300px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
 .shopping-list-item {
   display: flex;
   justify-content: space-between;
@@ -74,12 +131,6 @@ ul {
   border-bottom: 1px solid #ddd;
 }
 
-.button-container {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end; /* Align buttons to the right */
-  align-items: center; /* Ensure buttons stay next to each other */
-}
 
 .remove-button,
 .edit-button,
@@ -116,6 +167,7 @@ ul {
   opacity: 0.8;
 }
 
+
 .edit-form {
   margin-top: 20px;
   padding: 20px;
@@ -135,10 +187,11 @@ ul {
   margin-right: 10px;
 }
 
+
 .share-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #28a745; 
+  background-color: #28a745;
   color: white;
   border: none;
   cursor: pointer;
@@ -148,14 +201,17 @@ ul {
 }
 
 .share-button:hover {
-  background-color: #218838;  
+  background-color: #218838;
   opacity: 0.8;
 }
+
 
 .img-logo {
   max-width: 100px;
   margin-bottom: 20px;
 }
+
+
 .status-indicator {
   text-align: center;
   padding: 10px;
@@ -167,8 +223,6 @@ ul {
   justify-content: center;
   background-color: green;
   color: white;
- 
-
 }
 
 .offline {

@@ -1,7 +1,7 @@
-// Register.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from './png.webp'; // Ensure the path to your logo is correct
+import Swal from 'sweetalert2';
+
 import './register.css';
 
 const Register = () => {
@@ -12,28 +12,45 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleRegister = () => {
-    const users = JSON.parse(localStorage.getItem('users')) || []; // Retrieve existing users
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Validate inputs
     if (users.find(user => user.username === username)) {
-      alert('Username Exists');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Username already exists!',
+      });
     } else if (users.find(user => user.email === email)) {
-      alert('Email Already Registered');
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Email is already registered!',
+      });
     } else if (!/^\d{10}$/.test(phone)) {
-      alert('Enter a Valid 10-digit Phone Number');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Invalid Phone Number',
+        text: 'Please enter a valid 10-digit phone number.',
+      });
     } else {
-      const newUser = { username, password, email, phone }; // Create new user object
-      users.push(newUser); // Add new user to the array
-      localStorage.setItem('users', JSON.stringify(users)); // Save all users
-      alert('Registration Successful!'); // Notify user
-      navigate('/login'); // Navigate to login after registration
+      const newUser = { username, password, email, phone };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Registration Successful!',
+        text: 'You have been registered successfully.',
+        confirmButtonText: 'Proceed',
+      }).then(() => {
+        navigate('/shoppingForm');
+      });
     }
   };
 
   return (
     <div className="register-container-forms">
       <div className="registerform-container">
-        <img src={logo} className="logo" alt="Logo" />
         <h1>Register</h1>
         <form onSubmit={(e) => { e.preventDefault(); handleRegister(); }} className="register-form">
           <div className="register-form__input-group">
@@ -83,6 +100,21 @@ const Register = () => {
           </div>
           <button type="submit" className="register-form__button">Register</button>
         </form>
+        <div style={{ textAlign: 'center', marginTop: '15px' }}>
+          <p>
+            Already have an account?{' '}
+            <span
+              style={{
+                color: '#007BFF',
+                cursor: 'pointer',
+                textDecoration: 'underline'
+              }}
+              onClick={() => navigate('/login')}
+            >
+              Login
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );
